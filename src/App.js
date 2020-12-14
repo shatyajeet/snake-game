@@ -18,9 +18,10 @@ function App() {
   useInterval(updateGame, isRunning ? gameInterval : null)
 
   useEffect(() => {
+    setGameInterval(400)
     const playGround = document.getElementById('playground')
     playGround.focus()
-  })
+  }, [])
 
   function updateGame () {
     const head = snake.slice(-1)[0]

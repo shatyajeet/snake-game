@@ -1,38 +1,81 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: 32px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.score {
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.play-ground {
+  border: 1px solid #a5a5a5;
+  width: fit-content;
+}
+
+.row {
+  display: flex;
+}
+
+.row:nth-child(2n + 1) .sq:nth-child(2n) {
+  background-color: #efefef;
+}
+
+.row:nth-child(2n + 1) .sq:nth-child(2n + 1) {
+  background-color: #fff;
+}
+
+.row:nth-child(2n) .sq:nth-child(2n) {
+  background-color: #fff;
+}
+
+.row:nth-child(2n) .sq:nth-child(2n + 1) {
+  background-color: #efefef;
+}
+
+.sq {
+  width: 10px;
+  height: 10px;
+}
+
+.snake {
+  background-color: #777 !important;
+}
+
+.snake.head {
+  background-color: red !important;
+}
+
+.apple {
+  background-color: green !important;
+}
+
+.nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav .right-nav {
+  margin-right: 20px;
+}
+
+.nav .right-nav .row {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  width: 120px;
+}
+
+.nav .right-nav .row.middle {
+  justify-content: space-between;
+}
+
+.nav .right-nav .row button {
+  height: 30px;
+  width: 50px;
 }

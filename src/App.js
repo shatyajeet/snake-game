@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
+import styled from 'styled-components';
 
 import './App.css';
 
-const initialState = [304]
+const playgroundSide = 11
+const MAX_WIDTH = 30
+const initialState = [Math.ceil(Math.random() * (playgroundSide * playgroundSide))]
+const sqWidth = (document.documentElement.clientWidth - 32) / playgroundSide
 
 function App() {
   const [snake, setSnake] = useState(initialState)
@@ -13,7 +17,6 @@ function App() {
   const [updated, setUpdated] = useState(true)
   const [ended, setEnded] = useState(false)
   const [score, setScore] = useState(0)
-  const playgroundSide = 37
 
   useInterval(updateGame, isRunning ? gameInterval : null)
 
@@ -88,6 +91,8 @@ function App() {
 
   function resetGame () {
     setSnake(initialState)
+    setIsRunning(false)
+    setCurrentApple(null)
     setDirection(1)
     setScore(0)
   }
@@ -99,7 +104,7 @@ function App() {
   }
 
   function setNewApple (currentSnake) {
-    let randomApple = Math.ceil(Math.random() * (37 * 37))
+    let randomApple = Math.ceil(Math.random() * (playgroundSide * playgroundSide))
     if (currentSnake.includes(randomApple)) {
       setNewApple(currentSnake)
     } else {
@@ -188,16 +193,12 @@ function App() {
             const isSnakeBody = snake.includes(currentCoordinates)
             const isSnakeHead = currentCoordinates === snake.slice(-1)[0]
             const currentClass = isSnakeHead ? ' snake head' : isApple ? ' apple' : isSnakeBody ? ' snake' : ''
-            return <div className={`sq${currentClass}`} key={index} />
+            return <Square maxWidth={MAX_WIDTH} width={sqWidth} className={`sq${currentClass}`} key={index} />
           })}
         </div>)}
       </div>
       <div className="nav">
-        <div className="left-nav">
-          <button onClick={toggleGame}>{isRunning ? 'Pause' : 'Play'}</button>
-          <button onClick={resetGame}>Reset</button>
-        </div>
-        <div className="right-nav">
+        <div className="top-nav">
           <div className="row">
             <button onClick={() => handleDirectionChange('up')}>Up</button>
           </div>
@@ -209,9 +210,20 @@ function App() {
             <button onClick={() => handleDirectionChange('down')}>Down</button>
           </div>
         </div>
+        <div className="bottom-nav">
+          <button onClick={toggleGame}>{isRunning ? 'Pause' : 'Play'}</button>
+          <button onClick={resetGame}>Reset</button>
+        </div>
       </div>
     </div>
   );
 }
+
+const Square = styled.div`
+  max-width: ${_ => _.maxWidth}px;
+  max-height: ${_ => _.maxWidth}px;
+  height: ${_ => _.width}px;
+  width: ${_ => _.width}px;
+`
 
 export default App;

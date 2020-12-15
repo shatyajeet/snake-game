@@ -13,6 +13,7 @@
 
 .play-ground {
   border: 1px solid #a5a5a5;
+  max-width: calc(100vw - 32px);
   width: fit-content;
 }
 
@@ -53,29 +54,24 @@
   background-color: green !important;
 }
 
-.nav {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.nav .right-nav {
-  margin-right: 20px;
-}
-
-.nav .right-nav .row {
+.nav .top-nav .row {
   display: flex;
   justify-content: center;
   margin: 10px 0;
   width: 120px;
 }
 
-.nav .right-nav .row.middle {
+.nav .top-nav .row.middle {
   justify-content: space-between;
 }
 
-.nav .right-nav .row button {
+.nav .top-nav .row button {
   height: 30px;
   width: 50px;
+}
+
+.nav .bottom-nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }

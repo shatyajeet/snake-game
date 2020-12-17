@@ -10,7 +10,7 @@ const sqWidth = (document.documentElement.clientWidth - 32) / playgroundSide
 
 function App() {
   const [snake, setSnake] = useState(initialState)
-  const [gameInterval, setGameInterval] = useState(200)
+  const [gameInterval, setGameInterval] = useState(100)
   const [direction, setDirection] = useState(1)
   const [isRunning, setIsRunning] = useState(false)
   const [currentApple, setCurrentApple] = useState(null)

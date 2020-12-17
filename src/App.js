@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 import './App.css';
 
-const playgroundSide = 11
+const playgroundSide = 15
 const MAX_WIDTH = 30
 const initialState = () => [Math.ceil(Math.random() * (playgroundSide * playgroundSide))]
 const sqWidth = (document.documentElement.clientWidth - 32) / playgroundSide
 
 function App() {
   const [snake, setSnake] = useState(initialState())
-  const [gameInterval, setGameInterval] = useState(100)
+  const [gameInterval, setGameInterval] = useState(200)
   const [direction, setDirection] = useState(1)
   const [isRunning, setIsRunning] = useState(false)
   const [currentApple, setCurrentApple] = useState(null)
@@ -21,7 +21,7 @@ function App() {
   useInterval(updateGame, isRunning ? gameInterval : null)
 
   useEffect(() => {
-    setGameInterval(400)
+    setGameInterval(gameInterval)
     const playGround = document.getElementById('playground')
     playGround.focus()
   }, [])

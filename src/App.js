@@ -5,11 +5,11 @@ import './App.css';
 
 const playgroundSide = 11
 const MAX_WIDTH = 30
-const initialState = [Math.ceil(Math.random() * (playgroundSide * playgroundSide))]
+const initialState = () => [Math.ceil(Math.random() * (playgroundSide * playgroundSide))]
 const sqWidth = (document.documentElement.clientWidth - 32) / playgroundSide
 
 function App() {
-  const [snake, setSnake] = useState(initialState)
+  const [snake, setSnake] = useState(initialState())
   const [gameInterval, setGameInterval] = useState(100)
   const [direction, setDirection] = useState(1)
   const [isRunning, setIsRunning] = useState(false)
@@ -90,7 +90,7 @@ function App() {
   }
 
   function resetGame () {
-    setSnake(initialState)
+    setSnake(initialState())
     setIsRunning(false)
     setCurrentApple(null)
     setDirection(1)

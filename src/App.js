@@ -24,7 +24,7 @@ function App() {
     setGameInterval(gameInterval)
     const playGround = document.getElementById('playground')
     playGround.focus()
-  }, [])
+  }, [gameInterval])
 
   function updateGame () {
     const head = snake.slice(-1)[0]

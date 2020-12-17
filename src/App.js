@@ -71,6 +71,7 @@ function App() {
   function startGame () {
     if (ended) {
       resetGame()
+      setNewApple(snake)
       setEnded(false)
     }
     if (!currentApple) {
